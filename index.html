@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temprature Converter</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+        body{
+            background-image: url('bg-lg.webp');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+           font-family: 'Bruno Ace SC', cursive;
+        }
+        .main{
+            position: absolute;
+            left: 50%;
+            top: 46%;
+            transform: translate(-50%,-50%); 
+            width: 50%;
+        }
+        #container{
+            display:flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            background:transparent;
+        }
+        h3{
+            text-align: center;
+            font-size: 30px;
+            font-weight: 300;
+            margin-bottom: 50px;
+            color: #3d3d3d;
+        }
+        label{
+            font-size: 26px;
+            font-weight: 300;
+            color: #3d3d3d;
+        }
+        .input-div{
+            text-align: center;
+        }
+        .inp{
+            border: none;
+            border-radius: 7px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.3);
+            font-size: 32px;
+            font-weight: 300;
+            width: 250px;
+            margin: 15px;
+            text-align: center;
+            font-family: 'Bruno Ace SC', cursive;
+            color: #3d3d3d;
+        }
+        .inp:focus{
+            border:none;
+            outline: none;
+            box-shadow: none;
+        }
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+          -webkit-appearance: none;
+        }
+        .equal{
+            font-size: 30px;
+            margin-top: 30px;
+            color: #3d3d3d;
+        }
+        @media(max-width:1400px){
+            .equal{
+                display: none;
+            }
+        }
+        @media(max-width:778px){
+            .main{ 
+                width: 90%;
+            }
+            body{
+                background-image: url('bg-sm.webp');
+            }
+        }
+        @media(max-width:550px){
+           .inp{
+               width: 200px;
+            }
+        }
+        @media(max-width:300px){
+           .inp{
+               width: 170px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="main">
+        <h3>Temprature Converter</h3>
+        <div id="container">
+            <div class="input-div">
+                <label>Calcius</label><br>
+                <input type="number" id="cal" class="inp">
+            </div> <span class="equal">=</span>
+            <div class="input-div">
+                <label>Farenhite</label><br>
+                <input type="number" id="fah" class="inp">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cal = document.getElementById("cal");
+        let fah = document.getElementById("fah");
+
+        cal.addEventListener("input", function() {
+            let c = this.value;
+            let f = (c * 9/5) + 32;
+            if (!Number.isInteger(f)){
+                f = f.toFixed(4);
+            }
+            fah.value = f;
+        });
+
+        fah.addEventListener("input", function() {
+            let f = this.value;
+            let c = (f - 32) * 5/9;
+            if (!Number.isInteger(c)){
+                c = c.toFixed(4);
+            }
+            cal.value = c;
+        });
+
+    </script>
+
+</body>
+</html>
